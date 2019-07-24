@@ -1,4 +1,5 @@
 #!/bin/bash
+#Progress bar on terminal screen
 
 progress_bar() {
     local PROG_BAR_MAX=${1:-30}
@@ -13,9 +14,8 @@ progress_bar() {
         echo -en "$PROG_BAR_TODO"
         done
   # 1) "]" (to end the "[...]" bar)
-  # 2) Control-M (aka Carriage Return) (aka Octal \0015)
-  # 3) "[" (to replace the original "[" and put the cursor in the right place)
-  # echo -en "]^M["
+  # 2) "[" (to replace the original "[" and put the cursor in the right place)
+  # echo -en "]"
     echo -en "]\0015["
     for i in `seq 1 $PROG_BAR_MAX`
         do
@@ -28,7 +28,7 @@ progress_bar() {
 while :
     do
         curl http://localhost/status 2>/dev/null | grep "Ready" && break
-        echo "`date`: System is not ready. Checking again in 10 seconds..."
+        echo "`date`: System is not ready. Checking again.."
         progress_bar 10
         done
     echo "`date`: System is ready."
