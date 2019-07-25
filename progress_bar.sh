@@ -2,24 +2,24 @@
 #Progress bar on terminal screen
 
 progress_bar() {
-    local PROG_BAR_MAX=${1:-30}
-    local PROG_BAR_DELAY=${2:-1}
-    local PROG_BAR_TODO=${3:-"-"}
-    local PROG_BAR_DONE=${4:-">"}
+    local progressbar_max = ${1:-30}
+    local progressbar_delay = ${2:-1}
+    local progressbar_todo = ${3:-"-"}
+    local progressbar_done = ${4:-">"}
     local i
 
     echo -en "["
-    for i in `seq 1 $PROG_BAR_MAX`
+    for i in `seq 1 $progressbar_max`
         do
-        echo -en "$PROG_BAR_TODO"
+        echo -en "$progressbar_todo"
         done
   # 1) "]" to end loading bar
   # 2) "[" (to replace the original "[" and put the cursor in the right place)
     echo -en "]\0015["
-    for i in `seq 1 $PROG_BAR_MAX`
+    for i in `seq 1 $progressbar_max`
         do
-        echo -en "$PROG_BAR_DONE"
-        sleep ${PROG_BAR_DELAY}
+        echo -en "$progressbar_done"
+        sleep ${progressbar_delay}
         done
     echo
 }
