@@ -13,9 +13,8 @@ progress_bar() {
         do
         echo -en "$PROG_BAR_TODO"
         done
-  # 1) "]" (to end the "[...]" bar)
+  # 1) "]" to end loading bar
   # 2) "[" (to replace the original "[" and put the cursor in the right place)
-  # echo -en "]"
     echo -en "]\0015["
     for i in `seq 1 $PROG_BAR_MAX`
         do
